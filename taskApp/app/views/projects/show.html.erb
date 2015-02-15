@@ -1,0 +1,14 @@
+<h1><%= @project.title %></h1>
+
+<ul>
+  <% @project.tasks.each do |task| %>
+    <li><%= task.title %>
+    <%= link_to '[Del]', project_task_path(task.project.id,task.id), method: :delete,data: {cofirm: "are you share?"} %></li>
+  <% end %>
+  <li>
+    <%= form_for [@project, @project.tasks.build] do |f| %>
+      <%= f.text_field :title %>
+      <%= f.submit %>
+    <% end %>
+  </li>
+  </ul>
